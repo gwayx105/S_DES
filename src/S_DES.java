@@ -59,8 +59,8 @@ public class S_DES {
 					System.out.println("Invalid Entry...Please check and try again!!!");
 					break;
 			}
-		}while(response!=0);
-		System.out.print(Arrays.toString(S0));
+		}while(response!=3);
+		//System.out.print(Arrays.toString(S0));
 	}
 	public byte[] Encrypt(byte[] rawkey, byte[] plaintext) {
 		//test ciphertext
@@ -73,12 +73,11 @@ public class S_DES {
 		return temp;
 	}
 	public void genKeys(byte[] k) {
-		
+		//create sub keys
 	}
 	public byte [] P10(byte k1[]) {
 		/** Perform permutation P10 on 10-bit key 
-		  Perm10(k1, k2, k3, k4, k5, k6, k7, k8, k9, k10)  
-		        (k3, k5, k2, k7, k4, k10, k1, k9, k8, k6)
+		  Perm10(k1, k2, k3, k4, k5, k6, k7, k8, k9, k10) =  (k3, k5, k2, k7, k4, k10, k1, k9, k8, k6)
 		  **/
 		byte[] temp =new byte[10];
 		temp[0] = k1[2];
@@ -95,8 +94,19 @@ public class S_DES {
 	}
 	
 	public byte [] P8(byte k1[]) {
-		
-		return null;
+		/** Perform permutation P8 on 10-bit key by discarding the k1 and k2 bits
+		  Perm8(k1, k2, k3, k4, k5, k6, k7, k8, k9, k10) =  (k6, k3, k7, k4, k8, k5, k10, k9)
+		  **/
+		byte[] temp = new byte[8];
+		temp[0] = k1[5];
+		temp[1] = k1[2];
+		temp[2] = k1[6];
+		temp[3] = k1[3];
+		temp[4] = k1[7];
+		temp[5] = k1[4];
+		temp[6] = k1[9];
+		temp[7] = k1[8];
+		return temp;
 	}
 	public int mainMenu() {
 		int s = 0;
