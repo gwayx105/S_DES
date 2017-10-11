@@ -5,7 +5,7 @@ public class S_DES {
     final static int[][] S0 = { {1,0,3,2} , {3,2,1,0} , {0,2,1,3} , {3,1,3,2} } ;
     final static int[][] S1 = { {0,1,2,3},  {2,0,1,3}, {3,0,1,0}, {2,1,0,3}} ;
 	public static byte key1 [] = {1, 1, 1, 0, 0, 0, 1, 1, 1, 0};
-	
+ 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println("Key : "+Arrays.toString(key1));
