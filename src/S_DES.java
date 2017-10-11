@@ -17,6 +17,7 @@ public class S_DES {
 	public static byte[] Decrypt(byte[] rawkey, byte[] ciphertext) {
 		return null;
 	}
+	
 	public byte [] Perm10(byte k1[]) {
 		/** Perform permutation P10 on 10-bit key 
 		  Perm10(k1, k2, k3, k4, k5, k6, k7, k8, k9, k10)  
