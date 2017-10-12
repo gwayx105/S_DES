@@ -64,8 +64,9 @@ public class S_DES {
 	}
 	public byte[] Encrypt(byte[] rawkey, byte[] plaintext) {
 		//test ciphertext
-		byte[] temp = {48,48,49,49,48,49,48,48,49,48};
+		byte[] temp = IP(plaintext);
 		
+				
 		return temp;
 	}
 	public byte[] Decrypt(byte[] rawkey, byte[] ciphertext) {
@@ -175,6 +176,18 @@ public class S_DES {
 	    temp[6] = k[4];
 	    temp[7] = k[6];
 	    return temp;
+	}
+	public byte[] EXP_PERM(byte p[]) {
+		byte[] temp = new byte [8];
+		temp[0]  = p[3];
+	    temp[1]  = p[0];
+	    temp[2]  = p[1];
+	    temp[3]  = p[2];
+	    temp[4]  = p[1];
+	    temp[5]  = p[2];
+	    temp[6]  = p[3];
+	    temp[7]  = p[0];
+		return temp;
 	}
 	public int mainMenu() {
 		int s = 0;
