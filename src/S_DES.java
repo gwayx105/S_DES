@@ -74,6 +74,11 @@ public class S_DES {
 	}
 	public void genKeys(byte[] k) {
 		//create sub keys
+		//Sub key one generated
+		key_1 = P8(LS1(P10(k)));
+		//Sub key two generated
+		key_2 = P8(LS2(LS1(P10(k))));
+		System.out.print("Key 1: "+new String(key_1, StandardCharsets.US_ASCII)+" Key 2:"+new String(key_2, StandardCharsets.US_ASCII)+"\n");
 	}
 	public byte [] P10(byte k1[]) {
 		/** Perform permutation P10 on 10-bit key 
@@ -107,6 +112,69 @@ public class S_DES {
 		temp[6] = k1[9];
 		temp[7] = k1[8];
 		return temp;
+	}
+	public byte [] P4(byte k[]) {
+		byte [] temp = new byte [4];
+		
+		return temp;
+	}
+	public byte[] LS1(byte k[]) {
+		//shifting bits to the left once
+		byte [] temp = new byte[10];
+		temp[0] = k[1];
+	    temp[1] = k[2];
+	    temp[2] = k[3];
+	    temp[3] = k[4];
+	    temp[4] = k[0];
+	    
+	    temp[5] = k[6];
+	    temp[6] = k[7];
+	    temp[7] = k[8];
+	    temp[8] = k[9];
+	    temp[9] = k[5];
+		return temp;
+	}
+	public byte[] LS2(byte k[]) {
+		//shifting bits to the left twice
+		byte [] temp = new byte[10];
+		temp[0] = k[2];
+	    temp[1] = k[3];
+	    temp[2] = k[4];
+	    temp[3] = k[0];
+	    temp[4] = k[1];
+	    
+	    temp[5] = k[7];
+	    temp[6] = k[8];
+	    temp[7] = k[9];
+	    temp[8] = k[5];
+	    temp[9] = k[6];
+		return temp;
+	}
+	public byte[] IP(byte k[]) {
+		//initial permutation function
+		byte [] temp =new byte[8];
+		temp[0] = k[1];
+	    temp[1] = k[5];
+	    temp[2] = k[2];
+	    temp[3] = k[0];
+	    temp[4] = k[3];
+	    temp[5] = k[7];
+	    temp[6] = k[4];
+	    temp[7] = k[6];
+	    return temp;
+	}
+	public byte[] IP_INV(byte k[]) {
+		//initial permutation inverse function
+		byte[] temp = new byte[8];
+		temp[0] = k[1];
+	    temp[1] = k[5];
+	    temp[2] = k[2];
+	    temp[3] = k[0];
+	    temp[4] = k[3];
+	    temp[5] = k[7];
+	    temp[6] = k[4];
+	    temp[7] = k[6];
+	    return temp;
 	}
 	public int mainMenu() {
 		int s = 0;
